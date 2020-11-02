@@ -1,24 +1,60 @@
 import React from "react"
 import { Heading, Box, Grid } from "@chakra-ui/core"
-import { Link } from "gatsby"
+import { graphql, Link, StaticQuery } from "gatsby"
 import GatsbyLogo from "../assets/svg/gatsby.inline.svg"
 
 export default () => (
-  <Heading as="h1">
-    <Link to="/">
-      <Grid gridTemplateColumns="50px 1fr" gridGap="20px">
-        <Box maxW={50}>
-          <GatsbyLogo />
-        </Box>
-        <span
-          style={{
-            transform: `translateY(5px)`,
-            display: `inline-block`,
-          }}
-        >
-          Gatsby Source WordPress V4 demo
-        </span>
-      </Grid>
-    </Link>
-  </Heading>
+  <div>
+    <StaticQuery 
+      query={
+        graphql`
+      
+      query MyQuery {
+  allWpPage(filter: {title: {eq: "Options"}}) {
+                edges {
+                  node {
+                    ACF_SETTINGS {
+                      pageLogo {
+                        localFile {
+                          childImageSharp {
+                            fluid {
+                              originalImg
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+
+              links: allWpPage {
+                edges {
+                  node {
+                    title
+                    uri
+                  }
+                }
+              }          
+
+}
+
+    `}
+
+    render={ data=> ( 
+    <div>
+    
+    <img src={data.allWpPage.edges[0].node.ACF_SETTINGS.pageLogo.localFile.childImageSharp.fluid.originalImg}/> 
+    
+
+    {data.links.edges.map(x=> <a href={x.node.uri}> {x.node.title}</a>)}
+
+
+    </div>
+    )}
+
+    />
+
+   
+  </div>
 )

@@ -21,12 +21,12 @@ module.exports = {
       resolve: `gatsby-source-wordpress-experimental`,
       options: {
         url:
-          process.env.WPGRAPHQL_URL ||
-          `https://dev-gatsby-source-wordpress-v4.pantheonsite.io/graphql`,
+          `http://webbdesign.org/grafikcentralen/graphql`,
         verbose: true,
         develop: {
           hardCacheMediaFiles: true,
         },
+        
         debug: {
           graphql: {
             writeQueriesToDisk: true,
