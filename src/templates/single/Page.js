@@ -20,9 +20,31 @@ export const query = graphql`
               fieldGroupName
               text
             }
-            ... on WpPage_AcfModule_PageLayout_GreenComponent {
+            ... on WpPage_AcfModule_PageLayout_Formcomponent {
               fieldGroupName
               text
+              color
+
+                  displayimage {
+                    localFile {
+                      childImageSharp {
+                        fluid {
+                          originalImg
+                        }
+                      }
+                    }
+                  }
+
+                  backgroundImage {
+                    localFile {
+                      childImageSharp {
+                        fluid {
+                          originalImg
+                        }
+                      }
+                    }
+                  }
+          
             }
           }
         }
@@ -49,7 +71,7 @@ export const query = graphql`
               fieldGroupName
               text
             }
-            ... on WpPage_AcfModule_PageLayout_GreenComponent {
+            ... on WpPage_AcfModule_PageLayout_Formcomponent {
               fieldGroupName
               text
             }
