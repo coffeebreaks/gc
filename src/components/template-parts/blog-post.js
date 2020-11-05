@@ -41,7 +41,7 @@ function CreateMod(props) {
   return (
     <div>
       <Header/>
-  asdasd
+ 
     
       {
       page.ACF_MODULE.pageLayout !== null? page.ACF_MODULE.pageLayout.map((x,i) => 
