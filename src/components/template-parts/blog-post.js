@@ -41,12 +41,15 @@ function CreateMod(props) {
   return (
     <div>
       <Header/>
-  <h1>hew</h1> 
- {page.ACF_MODULE.pageLayout.map((x,i) => 
-
-   <CreateMod mod={x.fieldGroupName} data={page.ACF_MODULE} id={i}/>
-
-   )}
+  asdasd
+    
+      {
+      page.ACF_MODULE.pageLayout !== null? page.ACF_MODULE.pageLayout.map((x,i) => 
+      <CreateMod mod={x.fieldGroupName} data={page.ACF_MODULE} id={i}/>
+      )
+      :""
+      }
+  
   <p> {data.allWpPage.edges[0].node.uri} </p>
   
     </div>
